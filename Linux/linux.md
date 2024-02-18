@@ -7,7 +7,7 @@
 
 ## Part 2. Creating a user
 
-* The command call to creat user (and to add them to adm group):\
+* The command call to create user (and to add them to adm group):\
 ![Command call to create user](./screenshots/part2_1.png)
 
 * The output of the command ```cat /etc/passwd``` (to see a list of the system’s accounts):\
