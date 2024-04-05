@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  hellooo:
+    build:
+      dockerfile: Dockerfile.5
+      context: .
+  nginx:
+    build:
+      dockerfile: Dockerfile.6
+      context: ./Part_6_nginx/
+    ports:
+      - '80:8080'
