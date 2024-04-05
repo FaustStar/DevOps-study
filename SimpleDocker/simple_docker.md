@@ -131,7 +131,7 @@ dockle -ak NGINX_GPGKEY -ak NGINX_GPGKEY_PATH my-server:5
 docker run -d -p 80:81 my-server:5
 ```
 
-# Part 6. Basic Docker Compose
+## Part 6. Basic Docker Compose
 
 * Building and running the project:
 ```bash
