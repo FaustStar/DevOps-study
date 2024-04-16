@@ -1,0 +1,51 @@
+stages:
+  - build
+  - style
+  - test
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - cd ./src/cat
+    - make
+    - cd ../grep
+    - make
+  after_script:
+    - chmod +x ./src/telegram.sh
+    - ./src/telegram.sh
+  artifacts:
+    paths:
+      - ./src/cat/s21_cat
+      - ./src/grep/s21_grep
+    expire_in: 30 days
+
+style-job:
+  stage: style
+  script:
+    - chmod +x ./src/style_test.sh
+    - ./src/style_test.sh
+  after_script:
+    - chmod +x ./src/telegram.sh
+    - ./src/telegram.sh
+
+test-job:
+  stage: test
+  script:
+    - chmod +x ./src/integration_test.sh
+    - ./src/integration_test.sh
+  after_script:
+    - chmod +x ./src/telegram.sh
+    - ./src/telegram.sh
+  when: on_success #default value
+
+deploy-job:
+  stage: deploy
+  allow_failure: false
+  script:
+    - chmod +x ./src/deploy.sh
+    - ./src/deploy.sh
+  after_script:
+    - chmod +x ./src/telegram.sh
+    - ./src/telegram.sh
+  when: manual
